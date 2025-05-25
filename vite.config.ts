@@ -8,13 +8,13 @@ export default defineConfig({
   plugins: [react()],
   css: {
     modules: {
-      localsConvention: "camelCaseOnly",
+      localsConvention: "camelCase",
       generateScopedName: "[name]__[local]___[hash:base64:5]",
     },
   },
   build: {
     lib: {
-      entry: resolve(__dirname, "src/lib/index.ts"),
+      entry: resolve(__dirname, "src/lib/index.tsx"),
       name: "SeoPanel",
       fileName: format => `seo-panel.${format}.js`,
       formats: ["es", "umd"],

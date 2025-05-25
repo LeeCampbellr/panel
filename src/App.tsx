@@ -1,80 +1,18 @@
-import { useState } from "react";
+import { Panel } from "./lib/index";
 
-import { initSeoPanel, SeoAnalyticsPanel } from "./lib/index";
-
-import "./lib/panel.module.css";
 import "./App.css";
 
-interface VanillaPanelInstance {
-  toggle: () => void;
-  show: () => void;
-  hide: () => void;
-  destroy: () => void;
-}
-
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [vanillaPanel, setVanillaPanel] = useState<VanillaPanelInstance | null>(
-    null
-  );
-
-  const initVanillaPanel = () => {
-    if (vanillaPanel) {
-      vanillaPanel.destroy();
-      setVanillaPanel(null);
-    } else {
-      const panel = initSeoPanel({
-        containerId: "vanilla-panel-container",
-        position: "left",
-        showToggleButton: true,
-      });
-      setVanillaPanel(panel);
-    }
-  };
-
   return (
-    <div className="app">
+    <div className="test-app app">
+      <Panel />
+
       <header className="app-header">
         <h1>SEO Analytics Panel - Test Environment</h1>
-        <p>Test both React component and vanilla JS implementations</p>
+        <p>Test the React component implementation</p>
       </header>
 
       <main className="app-main">
-        {/* React Component Test */}
-        <section className="test-section">
-          <h2>React Component Test</h2>
-          <div className="controls">
-            <button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? "Close" : "Open"} React Panel
-            </button>
-            <span className="status">Status: {isOpen ? "Open" : "Closed"}</span>
-          </div>
-          <SeoAnalyticsPanel
-            isOpen={isOpen}
-            onToggle={() => setIsOpen(!isOpen)}
-            position="right"
-            showToggleButton={false}
-          />
-        </section>
-
-        {/* Vanilla JS Test */}
-        <section className="test-section">
-          <h2>Vanilla JS Test</h2>
-          <div className="controls">
-            <button onClick={initVanillaPanel}>
-              {vanillaPanel ? "Destroy" : "Initialize"} Vanilla Panel
-            </button>
-            {vanillaPanel && (
-              <>
-                <button onClick={() => vanillaPanel.toggle()}>Toggle</button>
-                <button onClick={() => vanillaPanel.show()}>Show</button>
-                <button onClick={() => vanillaPanel.hide()}>Hide</button>
-              </>
-            )}
-          </div>
-          <div id="vanilla-panel-container"></div>
-        </section>
-
         {/* Sample Content for Testing */}
         <section className="sample-content">
           <h2>Sample Content for SEO Testing</h2>

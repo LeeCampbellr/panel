@@ -19,10 +19,10 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
     "build:lib": "vite build",
     "build:types": "tsc --project tsconfig.lib.json",
-    "prepublishOnly": "npm run build:lib && npm run build:types",
+    "build": "npm run build:lib && npm run build:types",
+    "prepublishOnly": "npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",

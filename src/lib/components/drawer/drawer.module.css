@@ -1,0 +1,14 @@
+.Drawer {
+  height: calc(100vh - 4.5rem);
+  width: 33vw;
+  background-color: white;
+  border-radius: 0.25rem;
+  border: var(--border);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  overflow: auto;
+}
+
+.DrawerContent {
+  padding: 1rem;
+}

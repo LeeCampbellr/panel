@@ -1,6 +1,6 @@
 # SEO Analytics Panel
 
-A lightweight, framework-agnostic panel for SEO and analytics debugging in development environments.
+A lightweight React component for SEO and analytics debugging in development environments.
 
 ## Installation
 
@@ -39,7 +39,6 @@ function App() {
         isOpen={isOpen}
         onToggle={() => setIsOpen(!isOpen)}
         position="right"
-        showToggleButton={true}
       />
     </div>
   );
@@ -52,7 +51,7 @@ function App() {
 import "seo-analytics-panel/dist/seo-panel.css";
 ```
 
-### Vanilla JavaScript
+### Vanilla JavaScript (Optional)
 
 ```html
 <!DOCTYPE html>
@@ -67,67 +66,38 @@ import "seo-analytics-panel/dist/seo-panel.css";
     <script src="https://unpkg.com/seo-analytics-panel@latest/dist/seo-panel.umd.js"></script>
   </head>
   <body>
+    <div id="panel-container"></div>
+
     <script>
-      // Initialize with toggle button
-      const panel = SeoPanel({
+      const container = document.getElementById("panel-container");
+      const panel = createSeoPanel(container, {
+        isOpen: true,
         position: "right",
-        showToggleButton: true,
       });
 
-      // Manual controls
-      // panel.show();
-      // panel.hide();
-      // panel.toggle();
+      // Update panel
+      panel.render({ isOpen: false });
+
+      // Cleanup
+      panel.destroy();
     </script>
   </body>
 </html>
-```
-
-### ES Modules
-
-```javascript
-import { initSeoPanel } from "seo-analytics-panel";
-
-import "seo-analytics-panel/dist/seo-panel.css";
-
-const panel = initSeoPanel({
-  position: "right",
-  showToggleButton: true,
-});
-
-// Toggle panel
-panel.toggle();
-
-// Show/hide explicitly
-panel.show();
-panel.hide();
-
-// Cleanup when done
-panel.destroy();
 ```
 
 ## API
 
 ### React Component Props
 
-- `isOpen?: boolean` - Controls panel visibility
-- `onToggle?: () => void` - Callback when panel toggles
+- `isOpen?: boolean` - Controls panel visibility (default: false)
+- `onToggle?: () => void` - Callback when close button is clicked
 - `position?: 'right' | 'left'` - Panel position (default: 'right')
-- `showToggleButton?: boolean` - Show floating toggle button (default: false)
 
-### JavaScript API
+### Vanilla JS Helper (Optional)
 
-- `initSeoPanel(options)` - Initialize panel
-- `panel.toggle()` - Toggle panel visibility
-- `panel.show()` - Show panel
-- `panel.hide()` - Hide panel
-- `panel.destroy()` - Remove panel and cleanup
-
-### Options
-
-- `containerId?: string` - Container element ID (default: 'seo-panel-root')
-- `position?: 'right' | 'left'` - Panel position (default: 'right')
-- `showToggleButton?: boolean` - Show floating toggle button (default: true)
+- `createSeoPanel(container, props)` - Mount React component in container
+- `panel.render(props)` - Update component props
+- `panel.destroy()` - Unmount component
 
 ## Styling
 
@@ -135,8 +105,8 @@ The panel uses CSS modules for styling to avoid conflicts with your application.
 
 ### Bundle Sizes
 
-- **JavaScript (ES)**: 511KB (90KB gzipped)
-- **JavaScript (UMD)**: 174KB (55KB gzipped)
+- **JavaScript (ES)**: ~511KB (90KB gzipped)
+- **JavaScript (UMD)**: ~174KB (55KB gzipped)
 - **CSS**: 1.34KB (0.58KB gzipped)
 
 ## Development
