@@ -1,11 +1,22 @@
 import { useState } from "react";
-import { SeoAnalyticsPanel, initSeoPanel } from "./lib/index";
+
+import { initSeoPanel, SeoAnalyticsPanel } from "./lib/index";
+
 import "./lib/panel.module.css";
 import "./App.css";
 
+interface VanillaPanelInstance {
+  toggle: () => void;
+  show: () => void;
+  hide: () => void;
+  destroy: () => void;
+}
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [vanillaPanel, setVanillaPanel] = useState<any>(null);
+  const [vanillaPanel, setVanillaPanel] = useState<VanillaPanelInstance | null>(
+    null
+  );
 
   const initVanillaPanel = () => {
     if (vanillaPanel) {

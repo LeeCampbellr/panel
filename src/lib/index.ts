@@ -1,5 +1,7 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+
+import { createRoot, Root } from "react-dom/client";
+
 import styles from "./panel.module.css";
 
 // Main panel component (you'll build this)
@@ -93,7 +95,7 @@ export function initSeoPanel(
 
   let isOpen = false;
   let container = document.getElementById(containerId);
-  let root: any = null;
+  let root: Root | null = null;
 
   if (!container) {
     container = document.createElement("div");
@@ -157,5 +159,6 @@ declare global {
 
 // Auto-attach to window for UMD builds
 if (typeof window !== "undefined") {
-  (window as any).SeoPanel = initSeoPanel;
+  (window as Window & { SeoPanel: typeof initSeoPanel }).SeoPanel =
+    initSeoPanel;
 }

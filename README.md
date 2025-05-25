@@ -25,8 +25,9 @@ npm install seo-analytics-panel
 ### React/Next.js
 
 ```tsx
-import { SeoAnalyticsPanel } from "seo-analytics-panel";
 import { useState } from "react";
+
+import { SeoAnalyticsPanel } from "seo-analytics-panel";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -86,6 +87,7 @@ import "seo-analytics-panel/dist/seo-panel.css";
 
 ```javascript
 import { initSeoPanel } from "seo-analytics-panel";
+
 import "seo-analytics-panel/dist/seo-panel.css";
 
 const panel = initSeoPanel({
