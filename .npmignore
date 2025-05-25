@@ -1,0 +1,13 @@
+src/
+documentation/
+_archive/
+.DS_Store
+*.log
+node_modules/
+.env*
+.vscode/
+.cursor/
+tsconfig*.json
+vite.config.ts
+eslint.config.js
+index.html
