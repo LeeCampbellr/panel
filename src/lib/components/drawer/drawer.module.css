@@ -1,12 +1,64 @@
 .Drawer {
   height: calc(100vh - 4.5rem);
   width: 33vw;
-  background-color: white;
+  background-color: var(--background);
   border-radius: 0.25rem;
   border: var(--border);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-drawer);
   z-index: 100;
   overflow: auto;
+  position: fixed;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Disable transitions when closed to prevent unwanted animations */
+.Drawer[data-open="false"] {
+  transition: none;
+}
+
+/* Default position and animation (right side) */
+.Drawer[data-direction="left"] {
+  top: 2.25rem;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.Drawer[data-direction="left"][data-open="true"] {
+  transform: translateX(0);
+}
+
+.Drawer[data-direction="right"] {
+  top: 2.25rem;
+  right: 0;
+  transform: translateX(100%);
+}
+
+.Drawer[data-direction="right"][data-open="true"] {
+  transform: translateX(0);
+}
+
+.Drawer[data-direction="top"] {
+  top: 0;
+  left: 50%;
+  width: 50vw;
+  height: 50vh;
+  transform: translate(-50%, -100%);
+}
+
+.Drawer[data-direction="top"][data-open="true"] {
+  transform: translate(-50%, 0);
+}
+
+.Drawer[data-direction="bottom"] {
+  bottom: 0;
+  left: 50%;
+  width: 50vw;
+  height: 50vh;
+  transform: translate(-50%, 100%);
+}
+
+.Drawer[data-direction="bottom"][data-open="true"] {
+  transform: translate(-50%, 0);
 }
 
 .DrawerContent {

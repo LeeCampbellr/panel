@@ -26,3 +26,9 @@
   cursor: grabbing;
   background-color: var(--color-gray-100);
 }
+
+.Trigger[data-snapping="true"] {
+  cursor: default;
+  background-color: var(--color-gray-300);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

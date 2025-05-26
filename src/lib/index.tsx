@@ -1,22 +1,15 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import "./styles/index.css";
 
-import { Drawer } from "./components/drawer/drawer";
-import { Trigger } from "./components/trigger/trigger";
+import { Panel as DraggablePanel } from "./components/Panel";
 
 export const Panel: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const panelRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div data-panel ref={panelRef}>
-      <Trigger isOpen={isOpen} setIsOpen={setIsOpen} />
-
-      <Drawer isOpen={isOpen}>
+    <div data-panel>
+      <DraggablePanel>
         SEO and analytics debugging features coming soon...
-      </Drawer>
+      </DraggablePanel>
     </div>
   );
 };
